@@ -9,15 +9,32 @@ import android.os.Handler;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.wang.avi.AVLoadingIndicatorView;
 
 public class Splash extends Activity {
 
     InterstitialAd interstitialAd;
+    AVLoadingIndicatorView avi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        avi = findViewById(R.id.avi);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                startActivity(new Intent(Splash.this, SettingActivity.class));
+                finish();
+            }
+        }, 3000);
+
+
+
+
         KeyguardManager keyguardManager = (KeyguardManager)getSystemService(Activity.KEYGUARD_SERVICE);
         KeyguardManager.KeyguardLock lock = keyguardManager.newKeyguardLock(KEYGUARD_SERVICE);
         lock.disableKeyguard();

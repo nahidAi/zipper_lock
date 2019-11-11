@@ -23,11 +23,14 @@ public class SettingActivity extends Activity {
     TextView tv_status;
     int choser;
     public static InterstitialAd interstitialAd;
-    RelativeLayout playico,rateus,aboutus,disable;
+    RelativeLayout playico, rateus, aboutus, disable, chooseImage;
+    SharedPreferencesUtil sharedPreferencesUtil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setings);
+
 
         InterstitialAdmob_Load();
         AdView adView = (AdView) this.findViewById(R.id.adView);
@@ -38,9 +41,8 @@ public class SettingActivity extends Activity {
             public void onAdClosed() {
 
 
-                 if(choser==1)
-                {
-                    Intent in=new Intent(getApplicationContext(),Developerintro.class);
+                if (choser == 1) {
+                    Intent in = new Intent(getApplicationContext(), Developerintro.class);
                     startActivity(in);
 
                 }
@@ -49,39 +51,43 @@ public class SettingActivity extends Activity {
         });
         mContext = this;
 
-        SharedPreferencesUtil.init(mContext);
-       tv_status=(TextView)findViewById(R.id.text_en);
-        disable=(RelativeLayout)findViewById(R.id.disablescreenlock);
-        playico=(RelativeLayout)findViewById(R.id.playicon);
-        rateus=(RelativeLayout)findViewById(R.id.rateus);
-        aboutus=(RelativeLayout)findViewById(R.id.aboutus);
+        sharedPreferencesUtil.init(mContext);
+        tv_status = (TextView) findViewById(R.id.text_en);
+        mSwitchd = (SwitchCompat) this.findViewById(R.id.switch_locksetting);
+        disable = (RelativeLayout) findViewById(R.id.disablescreenlock);
+        playico = (RelativeLayout) findViewById(R.id.playicon);
+        rateus = (RelativeLayout) findViewById(R.id.rateus);
+        aboutus = (RelativeLayout) findViewById(R.id.aboutus);
+        chooseImage = (RelativeLayout) findViewById(R.id.chooseImage);
 
 
-            mSwitchd = (SwitchCompat) this.findViewById(R.id.switch_locksetting);
         mSwitchd.setTextOn("yes");
         mSwitchd.setTextOff("no");
-        boolean lockState = SharedPreferencesUtil.get(Lockscreen.ISLOCK);
+        boolean lockState = sharedPreferencesUtil.get(Lockscreen.ISLOCK);
         if (lockState) {
             mSwitchd.setChecked(true);
+            tv_status.setText("غیرفعال کردن");
 
         } else {
             mSwitchd.setChecked(false);
 
+
         }
+
 
         mSwitchd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    SharedPreferencesUtil.setBoolean(Lockscreen.ISLOCK, true);
+                    sharedPreferencesUtil.setBoolean(Lockscreen.ISLOCK, true);
                     Lockscreen.getInstance(mContext).startLockscreenService();
-                    tv_status.setText("Disable Lock Screen");
+                    tv_status.setText("غیرفعال کردن قفل");
                     finish();
 
                 } else {
-                    SharedPreferencesUtil.setBoolean(Lockscreen.ISLOCK, false);
+                    sharedPreferencesUtil.setBoolean(Lockscreen.ISLOCK, false);
                     Lockscreen.getInstance(mContext).stopLockscreenService();
-                    tv_status.setText("Enable Lock Screen");
+                    tv_status.setText("فعال کردن قفل");
 
                 }
 
@@ -110,22 +116,28 @@ public class SettingActivity extends Activity {
 
             }
         });
+        chooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingActivity.this,ImageActivity.class);
+                startActivity(intent);
+            }
+        });
 
         aboutus.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(SettingActivity.this, AboutActivity.class));
 
-                choser=1;
-                if(interstitialAd.isLoaded())
-                {
+               /* choser = 1;
+                if (interstitialAd.isLoaded()) {
                     interstitialAd.show();
-                }
-                else {
+                } else {
                     Intent in = new Intent(getApplicationContext(), Developerintro.class);
                     startActivity(in);
 
-                }
+                }*/
 
             }
         });
@@ -141,8 +153,6 @@ public class SettingActivity extends Activity {
 
             }
         });
-
-
 
 
     }

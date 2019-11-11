@@ -14,6 +14,37 @@
     android:layout_height="wrap_content">
 
 </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chooseImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/openscreenlock1"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/pati" >
+
+        <TextView
+            android:id="@+id/txtImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/image"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            />
+        <ImageView
+            android:id="@+id/imgImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/ic_image_black_24dp"
+            android:contentDescription="@+id/dlock"
+            />
+    </RelativeLayout>
     <RelativeLayout
             android:id="@+id/openscreenlock1"
             android:layout_width="match_parent"
@@ -24,14 +55,14 @@
 
             <TextView
                 android:id="@+id/text_en"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="@string/enable_zipper"
                 android:textSize="20sp"
                 android:textColor="#000000"
-                android:layout_marginLeft="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
                 />
 
 
@@ -40,7 +71,7 @@
                 android:id="@+id/switch_locksetting"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="35dp"
                 android:checked="false"
@@ -51,28 +82,28 @@
             android:id="@+id/disablescreenlock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/openscreenlock1"
+            android:layout_below="@+id/chooseImage"
             android:layout_marginTop="5dp"
             android:background="@drawable/pati" >
 
             <TextView
                 android:id="@+id/dis_txt"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="@string/disable_zipper"
                 android:textSize="20sp"
                 android:textColor="#000000"
-                android:layout_marginLeft="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
                 />
             <ImageView
                 android:id="@+id/dlock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
                 android:layout_marginTop="7dp"
-                android:layout_marginRight="35dp"
+                android:layout_marginLeft="35dp"
                 android:background="@drawable/disco"
                 android:contentDescription="@+id/dlock"
                 />
@@ -94,16 +125,17 @@
                 android:layout_marginTop="15dp"
                 android:text="@string/about_us"
                 android:textSize="20sp"
+                android:layout_alignParentRight="true"
                 android:textColor="#000000"
-                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 />
             <ImageView
                 android:id="@+id/info"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
                 android:layout_marginTop="7dp"
-                android:layout_marginRight="35dp"
+                android:layout_marginLeft="35dp"
                 android:background="@drawable/devin"
                 android:contentDescription="@+id/info"
                 />
@@ -124,15 +156,16 @@
                 android:text="@string/more_apps"
                 android:textSize="20sp"
                 android:textColor="#000000"
-                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
                 />
             <ImageView
                 android:id="@+id/plays"
                 android:layout_width="50dp"
                 android:layout_height="40dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
                 android:layout_marginTop="7dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
                 android:background="@drawable/playicon"
                 android:contentDescription="@+id/plays"
 
@@ -154,15 +187,16 @@
                 android:text="@string/rate_apps"
                 android:textSize="20sp"
                 android:textColor="#000000"
-                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
                 />
             <ImageView
                 android:id="@+id/star"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
                 android:layout_marginTop="7dp"
-                android:layout_marginRight="35dp"
+                android:layout_marginLeft="35dp"
                 android:background="@drawable/star"
                 android:contentDescription="@+id/star"
                 />
